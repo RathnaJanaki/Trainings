@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Color Generator</title>
+    </head>
+    <body>
+        <div id="colorpad" style="width:300px;height:300px;background-color:#000">
+
+        </div>
+        <br/>
+        <label>Color Code: </label><span id="colorCode">#000</span>
+        <br/>
+        <br/>
+        <button onclick="setRandomColor()">Random Color</button>
+    </body>
+    <script>
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function setRandomColor() {
+            var colorCode = getRandomColor();
+            document.getElementById('colorpad').style.backgroundColor  = colorCode;
+            document.getElementById('colorCode').innerText = colorCode;
+        }
+    </script>
+</html>
