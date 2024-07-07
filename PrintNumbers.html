@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <title>Print Numbers</title>
+    </head>
+    <body>
+        <label>Please provide start range:</label>
+        <input type="number" id="startRange"><br/><br/>
+        <label>Please provide end range:</label>
+        <input type="number" id="endRange"><br/><br/>
+        <button id="Generate" onclick="generateNumber();">Generate</button><br/>
+        <div style="display: block;width: 100%;">
+            <table>
+                <thead>
+                    <td style="padding: 10px;">Actual Numbers</td>
+                    <td style="padding: 10px;">Prime Numbers</td>
+                    <td style="padding: 10px;">Odd Numbers</td>
+                    <td style="padding: 10px;">Even Numbers</td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="vertical-align: text-top;text-align: center;">
+                            <p id="actualNumber">
+    
+                            </p>
+                        </td>
+                        <td style="vertical-align: text-top;text-align: center;">
+                            <p id="primeNumber">
+    
+                            </p>
+                        </td>
+                        <td style="vertical-align: text-top;text-align: center;">
+                            <p id="oddNumber">
+    
+                            </p>
+                        </td>
+                        <td style="vertical-align: text-top;text-align: center;">
+                            <p id="evenNumber">
+    
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+    <script>
+        function generateNumber(){
+            var startRange = parseInt(document.getElementById('startRange').value);
+            var endRange = parseInt(document.getElementById('endRange').value);
+            if(startRange==0 || endRange==0 || startRange>endRange || startRange==endRange){
+                alert('Please provide valid range');
+            }else{
+                var actualNumbers = '';
+                var primeNumbers = '';
+                var oddNumbers = '';
+                var evenNumbers = '';
+                for(var i=startRange;i<=endRange;i++){
+                    actualNumbers=actualNumbers+i+'</br>'
+                    if(isPrime(i)){
+                        primeNumbers=primeNumbers+i+'</br>'
+                    }
+                    if(i%2==0){
+                        evenNumbers=evenNumbers+i+'</br>'
+                    }else{
+                        oddNumbers=oddNumbers+i+'</br>'
+                    }
+                }
+                document.getElementById('actualNumber').innerHTML = actualNumbers
+                document.getElementById('primeNumber').innerHTML = primeNumbers
+                document.getElementById('evenNumber').innerHTML = evenNumbers
+                document.getElementById('oddNumber').innerHTML = oddNumbers
+            }
+        }
+        //prime number generation
+        function isPrime(number) {
+        // Corner case
+        if (number <= 1)
+            return false;
+
+        // Check from 2 to n-1
+        for (let i = 2; i < number; i++)
+            if (number % i == 0)
+                return false;
+
+        return true;
+    }
+    </script>
+</html>
